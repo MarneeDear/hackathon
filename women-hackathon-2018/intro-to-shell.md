@@ -853,7 +853,7 @@ Let's try a bigger problem.
 
 Remember that ugly log file we used `less` with? Let's try some commands to filter the file and find out some things about it.
 
-This is a log of messages from my personal Linux system. Ther are a lot of errors!
+This is a log of messages from a PHP web application I work on. 
 
 In our script let's add some lines.
 
