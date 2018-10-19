@@ -869,6 +869,13 @@ Can you use output redirect?
 Can you use grep?
 Can you show messages to keep track of what is happening?
 
+# Shell on Windows
+
+There are at least two ways to get a UNIX shell on Windows.
+
+1) install the Windows Subsystem for Linux
+2) install git-bash
+
 
 
 
