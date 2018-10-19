@@ -78,20 +78,7 @@ You will also hear `root` refer to the filesystem. As in
 
 The is the very beginning of the file system. On Windows this is often called the C:\ drive but might have any letter. 
 
-### Man Pages (as in the `man`ual) and `--help`
-
-You can see a guide to any UNIX commands with the `man` command. For example, in the `help` list we saw a command called `ls`. We will use this a lot to get a list of files and folders.
-
-TRY IT OUT
-
-```
-man ls
-```
-
-First we enter `man` and then we enter the name of the command we need help with.
-
-What happened? You should see an exaplanation of the `ls` command. 
-The emulator might have given you an error. That's ok. It's just the emulator. This would have worked in a real UNIX system.
+### `--help`
 
 Depending on the command you might be able to add the `--help` option to mosts commands to see how to use them. 
 
@@ -137,15 +124,19 @@ TRY IT OUT
 ls
 ```
 
-We probably dont see much. There is nothing in here. But let's make sure. Sometimes there are `hidden` files.
+You should see the file we uploaded `too-long-log`. 
+
+Sometimes there are `hidden` files.
+
+The `-a` option tells `ls` to show all files.
+
+TRY IT OUT
 
 ```
 ls -a
 ```
 
-The `-a` option tells `ls` to show all files.
-
-Nothing in there. Thats's ok. Let's create some stuff.
+Not much to see. Thats's ok. Let's create some stuff.
 
 # `mkdir` (create files and folders)
 
@@ -187,12 +178,18 @@ TRY IT OUT
 ls -l
 ```
 
-Notice that we see a whole bunch of new stuff. We see the date-time the folder was created and the permissions on that folder.
+Notice that we see a whole bunch of new info. We see the date-time the folder was created and the permissions on that folder. Notice everything is assigned to `root`.
 
 You can also combine options. Remember the `-a` option from earlier? This showed all files, including the hidden files. Let's see what that looks like.
 
 ```
 ls -la
+```
+
+We can dombine options for most UNIX commands. What can we do to find out what options a command has? Do you remember?
+
+```
+--help
 ```
 
 # Tab complete
@@ -207,7 +204,23 @@ What happened? Did the command line autocomplete the folder name for you?
 
 # `touch` (create an empty file)
 
-`touch` will create a new file (and some other things like update the last changed date on the file)
+`touch` will create a new file (and some other things like update the last changed date on the file).
+
+First let's change directories into the `hackathon` folder. Do you remember the command for this? Don't forget `tab complete`.
+
+TRY IT OUT
+
+```
+cd hackathon
+```
+
+Check where you are. How do we do that?
+
+```
+pwd
+```
+
+Now let's use `touch`.
 
 TRY IT OUT
 
@@ -215,7 +228,7 @@ TRY IT OUT
 touch workshop.txt
 ```
 
-Let's see what happened. Do you remember what command to use?
+Let's see what happened. Do you remember what command to use to list files and folders?
 
 ```
 ls
@@ -223,7 +236,8 @@ ls
 ```
 ls -la
 ```
-Did you see the new file? If you use the long option you should also see today's date and time.
+
+Did you see the new file? If you used the long option you should also see today's date and time.
 
 # `vi` (edit a file)
 
@@ -298,6 +312,25 @@ Can you remember the commands for these tasks?
 * list files and folders
 * autocomplete a file or folder name
 
+# up and down arrows (history)
+
+We have entered a lot of commands. What if I want to re-do a command I had entered earlier? Would I have to re-type it? No! Hit the up arrow and you will see the last command you entered. Keep hitting the up arrow and you can go through your whole history. You can also use the down arrow. 
+
+TRY IT OUT
+
+```
+up arrow
+down arrow
+```
+
+You can also see a list of your command history. Can you guess what that command is?
+
+TRY IT OUT
+
+```
+history
+```
+
 # `cat` and `less` (Display the contents of a folder)
 
 `vi` is not the only way to see the contents of a file. We can use `cat` and `less` to display the contents on the command line. 
@@ -319,10 +352,10 @@ Imagine the contents of that file were really long -- too long to fit on the scr
 
 Try `cat` again but this time use `too-long-log`.
 
-TRY IT OUT
+TRY IT OUT (DONT FORGET TAB COMPLETE)
 
 ```
-cat too-long-log
+cat /mnt/too-long-log
 ```
 
 Whoa! That's a lot of stuff. How can we see the contents in a better way?
@@ -350,7 +383,7 @@ There is a lot of stuff in this file and its hard to read and sort through, even
 TRY IT NOW
 
 ```
-tail too-long-log
+tail /mnt/too-long-log
 ```
 
 You can also tell it how many lines you want to see, like this.
@@ -358,7 +391,7 @@ You can also tell it how many lines you want to see, like this.
 TRY IT OUT
 
 ```
-tail -1 too-long-log
+tail -1 /mnt/too-long-log
 ```
 
 This tells `tail` to only show the last line in the file.
@@ -368,14 +401,24 @@ This tells `tail` to only show the last line in the file.
 TRY IT NOW
 
 ```
-head too-long-log
+head /mnt/too-long-log
 ```
 
-You can give head line options too. Try some options on `head` and `tail`.
+You can give head line options too. Try some line number options on `head` and `tail`.
+
+```
+tail -10 /mnt/too-long-log
+```
+
+```
+head -100 /mnt/too-long-log
+```
+
+That's great but what if I am looking for specific word or a date and time? No problem. There is a command for that.
 
 # grep (filter and search the contents of a file)
 
-With `grep` we can search the contents to find a pattern. `grep` will display the lines that have a pattern that matches.
+With `grep` we can search the contents to find a pattern. `grep` will display the lines that have a pattern that matches what we tell it.
 
 Let's create a file do `grep`.
 
@@ -386,10 +429,13 @@ touch grep.txt
 ```
 
 Do you remember how to edit a file?
+
 ```
 vi grep.txt
 ```
-Let's enter a few lines of text like this
+
+Let's enter a few lines of text like this.
+
 ```
 hello workshop
 hacking is fun
@@ -409,6 +455,7 @@ Great, now let's check the content. Do you remember how to display the contents 
 ```
 cat
 ```
+
 ```
 less
 ```
@@ -442,7 +489,7 @@ grep saturn grep.txt
 
 I use grep a lot when I am looking through logs files for certain error messages, or when I only want the logs for a certain date and time. There are lots of applications of grep, but log parsing is a common system administrator task.
 
-Scientists often use grep to process their data files.
+Researchers often use grep to process their data files.
 
 # >> and > (output redirect)
 
@@ -455,6 +502,8 @@ Let's say we want to create a new file with the output of the grep command we ra
 Let's use `>` to create a new file with the contents from `grep`.
 
 TRY IT OUT
+
+REMEBER UP ARROW 
 
 ```
 grep awesome grep.txt > awesome.txt
@@ -527,9 +576,9 @@ What commands did we use to do these things
 * searched files for patterns
 * combined commands
 
-# cd and pwd revisit (change directory and present working directory)
+# cd and pwd revisited (change directory and present working directory)
 
-We have created files and listed files and folders. What if we wanted to create more folder and navigate to them like we do in Windows File Explorer or Mac Finder? We used that command earlier. Do you remember what it was?
+We have created files and listed files and folders. What if we wanted to create more folders and navigate to them like we do in Windows File Explorer or Mac Finder? We used that command earlier. Do you remember what it was?
 
 First let's find out where we are.
 
@@ -592,7 +641,7 @@ pwd
 Did the output look like this?
 
 ```
-hackathon/one
+/mnt/hackathon/one
 ```
 
 Ok great. How do I get back to the hackathon folder? There are two ways. 
@@ -606,7 +655,7 @@ The `..` tells `cd` to go up one level.
 Or, we can tell `cd` explicitly the folder path like this.
 
 ```
-cd /hackathon
+cd /mnt/hackathon
 ```
 
 TRY IT OUT
@@ -625,12 +674,10 @@ pwd
 Did you see this?
 
 ```
-/hackathon
+/mnt/hackathon
 ```
 
 Great!
-
-
 
 # `mv` (moving files)
 
