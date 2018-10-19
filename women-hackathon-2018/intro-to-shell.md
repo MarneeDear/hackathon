@@ -679,9 +679,115 @@ Did you see this?
 
 Great!
 
-# `mv` (moving files)
+# `mv` and `cp` and `rm` (moving files, copying files, deleting files)
 
-# wc (word count) (MAYBE)
+We can also move, copy, and delete files and folders like we do in File Explorer.
+
+First let's create some folder and files to work with. Do you remember what command will create folders (make directories)?
+
+DON'T FORGET TAB COMPLETE
+
+TRY IT OUT
+
+```
+mkdir move
+mkdir copy
+```
+
+Let's check the folders are there. Remember the command?
+
+```
+ls -ls
+```
+
+Do you remember what command we can use to create files?
+
+TRY IT OUT
+
+```
+touch move-me
+touch copy-me
+```
+
+Let's check the files are there. Remember the command?
+
+```
+ls -la
+```
+
+Let's move the file into the `move` folder. To move files we use the `mv` command.
+
+TRY IT OUT
+
+```
+mv move-me move
+```
+
+Let's see what happened. How do we list the contents of the `move` folder?
+
+```
+ls -la move
+```
+
+Did you see your file? What about the folder where we created it? Do we see it there?
+
+```
+ls -la
+```
+
+`move-me` shouldn't be there.
+
+## `cp`
+
+Let's copy `copy-me` into the copy folder. To do this we use the `cp` command. This will make a copy of a file and put in a location you tell it to and with the name you tell it.
+
+Let's copy `copy-me` into `copy` and call it `copy-me-copy`.
+
+TRY IT OUT
+
+```
+cp copy-me copy/copy-me-copy
+```
+
+Let's check to see if the file is still here.
+
+```
+ls -la
+```
+
+You should see the copy file.
+
+Let's check to see if the file was copied.
+
+```
+ls -la copy
+```
+
+Do you see the copied file?
+
+## `rm`
+
+Let's delete the `move-me` file. We can delete files with the `rm` command. `rm` stands for remove.
+
+```
+rm move/move-me
+```
+
+Let's see if that worked.
+
+```
+ls -la
+```
+
+`rm` can also delete entire folders and their contents. We use option `-r` to do this recursively (meaning it will delete the folder and any file or folder inside that folder).
+
+TRY IT OUT
+
+```
+rm -r copy
+```
+
+# `wc` (word/line count)
 
 `wc` let's use count the number of words or lines in a file. Let's count the words in `grep.txt`.
 
@@ -695,17 +801,43 @@ wc grep.txt
 
 What happened? You should see a count of all of the words in the file.
 
-What if I want
+How about counting lines instead. We can use the `-l` option to tell `wc` to count lines.
+
+TRY IT OUT
+
+```
+wc -l grep.txt
+```
 
 # Writing a script
 
-We don't have to write our commands to the commands line. We can put them in a file and then run the file. This is called a script because the operating system will follow it and repeat the commands. This lets us do things like:
+We don't have to write our commands to the commands line. We can put them in a file and then run the file. This is called a script because the operating system will follow it and do the commands. This lets us do things like:
 
 * automate repetitive tasks
 * reproduce the same steps every time
 * share our commands with others
 
-THINK OF SOMETHING TO AUTOMATE
+Let's upload the sample script file and try running it. Click Choose Files and select `automate-me.sh` to send to the emulator. (The `.sh` extension means it is a shell script.)
+
+Change directories to go up one level so that you are now in `/mnt`.
+
+```
+cd ..
+```
+
+List the files in the folder.
+
+```
+ls -la
+```
+
+Do you see that file? Great. Let's display the contents of the file.
+
+```
+cat automate-me.sh
+```
+
+
 
 
 
