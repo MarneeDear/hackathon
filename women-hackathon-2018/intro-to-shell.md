@@ -837,6 +837,16 @@ Do you see that file? Great. Let's display the contents of the file.
 cat automate-me.sh
 ```
 
+Not much in there, right? That's ok, let's add some commands and create a re-usable script.
+
+But first. Let's try running the script see what it does. 
+
+TRY IT OUT
+
+```
+bash automate-me.sh
+```
+
 
 
 

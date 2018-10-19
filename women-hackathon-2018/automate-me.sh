@@ -1,8 +1,3 @@
-#!/bin/bash
+#!/bin/bh
+echo "Let's automate all the things!"
 
-cd ~/dc_sample_data
-
-for file in untrimmed_fastq/*.fastq
-do
-  echo "My file name is $file"
-done
