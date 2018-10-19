@@ -338,6 +338,10 @@ grep saturn grep.txt
 
 You don't get any output.
 
+### How do I use grep?
+
+I use grep a lot when I am looking through logs files for certain error messages, or when I only want the logs for a certain date and time. There are lots of applications of grep, but lof parsing is a common system administrator task.
+
 # >> and > (output redirect)
 
 Let's say we want to create a new file with the output of the grep command we ran above? We can use an output redirect.
@@ -533,6 +537,15 @@ TRY IT OUT
 
 Let's `cd` into `two`, but instead of typing out `two` just type the letter `t` and hit `tab`. This should automatically type the word `two` for you.
 
+# Writing a script
+
+We don't have to write our commands to the commands line. We can put them in a file and then run the file. This is called a script because the operating system will follow it and repeat the commands. This let's us do things like:
+
+* automate repetitive tasks
+* reproduce the same steps every time
+* share our commands with others
+
+THINK OF SOMETHING TO AUTOMATE
 
 # wc (word count) (MAYBE)
 
