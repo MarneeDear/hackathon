@@ -4,27 +4,19 @@ Preferred for this workshop
 
 > [Copy.sh](http://copy.sh/v86/?profile=linux3)
 
-But if it offline we can try this one (this one has games!)
+But if it is offline we can try this one (this one has games!)
 
 > [cb.vu](http://cb.vu/)
 
 The emulators have limited capabilities but are good for learning and demonstrations.
 
+If you are on Mac you can use `Terminal`. Since MacOS is built on a UNIX system, you have a built-in command line shell that will let you do everything in this workshop. It will be a little easier to follow along if you use the emulator, but any of the commands we use today will work in `Terminal`.
+
+Note: Windows has a command line too, but it is an operating system called DOS and we won't be learning those commands today.
+
 # Shell help
 
 [Explain Shell](https://explainshell.com/)
-
-## SNAKE! (MAYBE)
-
-Let's play snake. 
-
-TRY IT OUT
-
-```snake```
-
-What happened? We played a nice game of snake. 
-
-Hit `esc` key or `q` to stop the game and go back to the command line.
 
 # What is the shell, anyway?
 
@@ -36,18 +28,28 @@ The shell is an interface to your computer's operating system. It provides a bum
 * move files around
 * display the contents of files
 * search the contents of files
+* setup user accounts
+* process data files
+* play games
+* install other programs that run on the command line
+* run scripts that can automate repetitive tasks
+* do basic system administation
 
 And lots more ... .
 
 # What's so good about it?
 
 * Not all operating systems have a graphical interface
-* Sometimes the graphical tools are limited and clunky (ie theyu suck), but you can combine some shell commands to do more powerful things, like automate repetitive tasks or process a data file.
-* The command line is not only for programmers and system admins, scientists use it to automate their data processing and run their simulations. It's so important that we run regular workshops teaching grad students how to use the shell.
+* Sometimes the graphical tools are limited and clunky
+* The command line is not only for programmers and system admins, scientists use it to automate their data processing and run their simulations. The command line is so important to their works that we run regular workshops teaching grad students how to use the command line.
 
-# Root 
+# `whoami`
 
-You'll hear shell users saying things like:
+In the emulator you are something called `root`.
+
+## `root` 
+
+You'll hear UNIX/Linux users saying things like:
 
 > I need `root` access to that machine.
 
@@ -55,7 +57,7 @@ You'll hear shell users saying things like:
 
 > Those files only allow `root` read/write access.
 
-`root` is the name of the user in an UNIX system that has access to everything. This user is very powerful and should be protext because `root` can change or delete any file, and `root` install and run any program.
+`root` is the name of the user in an UNIX system that has access to everything. This user is very powerful and should be protected because `root` can change or delete any file, and `root` can install and run any program.
 
 In your shell emulator you are `root`! You can do anything the emulator has available.
 
@@ -77,7 +79,7 @@ What happened? You should see a list of commands. Ok cool, there are lots in her
 
 ### Man Pages (as in the `man`ual) and `--help`
 
-You can all of help and a guide for any of UNIX commands with the man command. For example, in the `help` list we saw a command called `ls`. We will use this a lot to get a list of files and folders.
+You can see a guide to any UNIX commands with the `man` command. For example, in the `help` list we saw a command called `ls`. We will use this a lot to get a list of files and folders.
 
 TRY IT OUT
 
@@ -120,7 +122,7 @@ The `-a` option tells `ls` to show all files.
 
 Nothing in there. Thats's ok. Let's create some stuff.
 
-# Create files and folders
+# `mkdir` (create files and folders)
 
 Let's make a folder to keep all of our files.
 
@@ -130,10 +132,9 @@ TRY IT OUT
 mkdir hackathon
 ```
 
+This will create a folder called `hackathon`.
 
-This will create a folder called `hackathon` and then list all of the files and folders.
-
-What's in there?
+Let's see what files and folders we have now.
 
 TRY IT OUT
 
@@ -141,9 +142,17 @@ TRY IT OUT
 ls -a
 ```
 
+You should see `hackathon` listed. What is inside hackathon? To do that we can pass the name of the folder to the `ls` command.
+
+TRY IT OUT
+
+```
+ls -a hackathon
+```
+
 What's in there? Probably nothing. That's ok. Let's make some files. But first let's try some more `ls` options
 
-## ls -l
+## `ls -l`
 
 The `-l` option gives you the long form of `ls`. Let's see what that looks like.
 
@@ -153,13 +162,15 @@ TRY IT OUT
 ls -l
 ```
 
+Notice that we see a whole bunch of new stuff. We see the date-time the folder was created and the permissions on that folder.
+
 You can also combine options. Remember the `-a` option from earlier? This showed all files, including the hidden files. Let's see what that looks like.
 
 ```
 ls -la
 ```
 
-# touch (create an empty file)
+# `touch` (create an empty file)
 
 `touch` will create a new file.
 
@@ -178,7 +189,7 @@ ls
 ls -la
 ```
 
-# vi (edit a file)
+# `vi` (edit a file)
 
 `workshop.txt` is empty. But there are command line tools that will let us edit the files. One of the most common is `vi`. With `vi` you can use the keyboard to move around in the file, make edits, copy and paste, and do other editing things. Let's try it.
 
@@ -193,7 +204,7 @@ Try typing something.
 
 Notice that nothing happens. This is because `vi` won't start typing until you tell it that you want to start entering stuff. That command is `i`.
 
-TRY IT OUT 
+TRY IT OUT
 
 ```
 hit the `i` key and then try to enter some stuff
@@ -250,7 +261,7 @@ Great. We have done all of this stuff:
 
 What are the commands for each of these tasks?
 
-# cat and less (Display the contents of a folder)
+# `cat` and `less` (Display the contents of a folder)
 
 `vi` is not the only way to see the contents of a file. We can use `cat` and `less` to dispaly the contents on the command line. 
 
@@ -564,7 +575,17 @@ What happened? You should see a count of all of the words in the file.
 What if I want
 
 
+## SNAKE! (MAYBE)
 
+Let's play snake.
+
+TRY IT OUT
+
+```snake```
+
+What happened? We played a nice game of snake. 
+
+Hit `esc` key or `q` to stop the game and go back to the command line.
 
 
 
