@@ -10,9 +10,9 @@ But if it is offline we can try this one (this one has games!)
 
 The emulators have limited capabilities but are good for learning and demonstrations.
 
-If you are on Mac you can use `Terminal`. Since MacOS is built on a UNIX system, you have a built-in command line shell that will let you do everything in this workshop. It will be a little easier to follow along if you use the emulator, but any of the commands we use today will work in `Terminal`.
+NOTE: Since MacOS is built on a UNIX system, you have a built-in command line shell that will let you do everything in this workshop. It will be a little easier to follow along if you use the emulator, but any of the commands we use today will work in `Terminal`.
 
-Note: Windows has a command line too, but it is an operating system called DOS and we won't be learning those commands today.
+Note: Windows has a command line too, but it is an operating system called DOS and we won't be learning those commands today. There are some programs you can install to get a Linux command-line on Windows. Come talk to me after if you are interested.
 
 # Setup the emulator
 
@@ -64,9 +64,9 @@ You'll hear UNIX/Linux users saying things like:
 
 > I need `root` access to that machine.
 
-> The hacker gained `root` access to the main server.
+> We've been PWNED! The hacker gained `root` access to the main server.
 
-> Those files only allow `root` read/write access.
+> Those files only allow `root` access.
 
 `root` is the name of the user in an UNIX system that has access to everything. This user is very powerful and should be protected because `root` can change or delete any file, and `root` can install and run any program.
 
@@ -815,7 +815,7 @@ We don't have to write our commands to the commands line. We can put them in a f
 
 * automate repetitive tasks
 * reproduce the same steps every time
-* share our commands with others
+* share our work with others
 
 Let's upload the sample script file and try running it. Click Choose Files and select `automate-me.sh` to send to the emulator. (The `.sh` extension means it is a shell script.)
 
@@ -837,15 +837,38 @@ Do you see that file? Great. Let's display the contents of the file.
 cat automate-me.sh
 ```
 
-Not much in there, right? That's ok, let's add some commands and create a re-usable script.
+There is a bit in there. The first line tells the command line what shell to use to run the script. The `echo` lines will output the text to the screen. We have been using those other commands today.
 
-But first. Let's try running the script see what it does. 
+Can you guess what this script will do? Let's try running the script to see what it does.
 
 TRY IT OUT
 
 ```
-bash automate-me.sh
+./automate-me.sh
 ```
+
+## Exercise
+
+Let's try a bigger problem.
+
+Remember that ugly log file we used `less` with? Let's try some commands to filter the file and find out some things about it.
+
+This is a log of messages from my personal Linux system. Ther are a lot of errors!
+
+In our script let's add some lines.
+
+1) Output the total number of lines.
+2) Find only the lines that have `Warning` in them
+2) From only the `Warnings` lines, produce a new file with the lines only corresponding to time `14:53`
+3) Output the total number of lines in the new file
+4) Output the last line in the new file
+5) Anything else you can think of!
+
+Can you use pipe?
+Can you use output redirect?
+Can you use grep?
+Can you show messages to keep track of what is happening?
+
 
 
 
