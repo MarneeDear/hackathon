@@ -14,6 +14,17 @@ If you are on Mac you can use `Terminal`. Since MacOS is built on a UNIX system,
 
 Note: Windows has a command line too, but it is an operating system called DOS and we won't be learning those commands today.
 
+# Setup the emulator
+
+## Download my files from Github and send to the emulator
+
+1) Go to `https://github.com/MarneeDear/hackathon`
+2) Click `Clone or Download` and select Download ZIP. Download it to where you would like but remember where you put it.
+3) Unzip the folder
+4) Go back to the emulator and select Choose Files. 
+5) Using the explorer, find the folder you unzipped. Go into women-hackathon-2018.
+6) Select `too-long-log`.
+
 # Shell help
 
 [Explain Shell](https://explainshell.com/)
@@ -61,21 +72,11 @@ You'll hear UNIX/Linux users saying things like:
 
 In your shell emulator you are `root`! You can do anything the emulator has available.
 
-# What can I do in here, anyway?
+You will also hear `root` refer to the filesystem. As in
 
-Let's find out.
+> The file is in the `root` directory.
 
-## Help
-
-The emulator might have a `help` command that will list all of the other commands the emulator can do.
-
-### TRY IT OUT ()
-
-```
-help
-```
-
-What happened? You should see a list of commands. Ok cool, there are lots in here! We can do all kinds of things. The emulator is pretty nice.
+The is the very beginning of the file system. On Windows this is often called the C:\ drive but might have any letter. 
 
 ### Man Pages (as in the `man`ual) and `--help`
 
@@ -100,7 +101,31 @@ TRY IT OUT
 ls --help
 ```
 
-The emulator probably gave you an error. That's ok. It's just the emulator. This would have worked in a real UNIX system.
+The emulator might have given you an error. That's ok. It's just the emulator. This would have worked in a real UNIX system.
+
+# cd and pwd (change directories)
+
+We can use the emulator to upload files. The emulator puts them in a folder called `mnt`. You will often see things called `mnt` in UNIX. `mnt` stands for `mounted` as in a mounted drive. This is something that you have to attach to the filesystem. These could be things like:
+
+* a USB stick
+* a external hard drive
+* an extra hard drive
+* a virtual hard drive
+* a networked filesystem
+
+We will be uploading files to the emualtor, so let's go to the `mounted` drive to get started.
+
+To do this we can used the `cd` command. This stands for change directories. This will change our location in the filesystem like we do with Windows File Explorer or Mac Finder.
+
+TRY IT OUT
+
+```
+cd /mnt
+```
+
+Now that we have changed directories let's make sure we are in the right place. We can use a command to find out.
+
+`pwd` stands for `present working directory` and will show us the path from the root of the filesystem 
 
 # `ls` (list all files and folders)
 
@@ -150,7 +175,7 @@ TRY IT OUT
 ls -a hackathon
 ```
 
-What's in there? Probably nothing. That's ok. Let's make some files. But first let's try some more `ls` options
+What did you see? Probably nothing. That's ok. Let's make some files. But first let's try some more `ls` options
 
 ## `ls -l`
 
@@ -170,9 +195,19 @@ You can also combine options. Remember the `-a` option from earlier? This showed
 ls -la
 ```
 
+# Tab complete
+
+Most commands lines will have something called `tab complete`. `Tab complete` will automatically complete your typing a file name or path for you. 
+
+TRY IT OUT
+
+Try the ls command on the `hackathon` folder again but this time just type the first letter and then hit `tab`. 
+
+What happened? Did the command line autocomplete the folder name for you?
+
 # `touch` (create an empty file)
 
-`touch` will create a new file.
+`touch` will create a new file (and some other things like update the last changed date on the file)
 
 TRY IT OUT
 
@@ -188,6 +223,7 @@ ls
 ```
 ls -la
 ```
+Did you see the new file? If you use the long option you should also see today's date and time.
 
 # `vi` (edit a file)
 
@@ -227,7 +263,7 @@ This puts a colon and a command line at the bottom of the `vi` frame, like this.
 ```
 :
 ```
-On that command type
+On that command-line type
 ```
 w
 ```
@@ -250,22 +286,23 @@ At the `:` enter
 
 Now you should be back the command line.
 
+There are lots of commands in `vi` that you can learn, but I will leave that to you.
+
 # Review
 
-Great. We have done all of this stuff:
+Can you remember the commands for these tasks?
 
-* made a directory
-* created a new file
-* edited the file
-* listed files and folders
-
-What are the commands for each of these tasks?
+* make a directory
+* create a new file
+* edit the file
+* list files and folders
+* autocomplete a file or folder name
 
 # `cat` and `less` (Display the contents of a folder)
 
-`vi` is not the only way to see the contents of a file. We can use `cat` and `less` to dispaly the contents on the command line. 
+`vi` is not the only way to see the contents of a file. We can use `cat` and `less` to display the contents on the command line. 
 
-## cat
+## `cat`
 
 `cat` will print all of the contents all at one
 
@@ -278,16 +315,65 @@ cat workshop.txt
 ```
 What happened? Did you see the stuff you wrote in the file using `vi`?
 
-Imagine the contents of that file were really long -- too long to fit on the screen? It would be a pain tri have to scroll around to see the contents. That's ok. We have a command to help us.
+Imagine the contents of that file were really long -- too long to fit on the screen? It would be a pain to have to scroll around to see the contents. That's ok. We have a command to help us.
 
-With `less` we can display the contents in chunks that we can page through. 
+Try `cat` again but this time use `too-long-log`.
 
 TRY IT OUT
 
 ```
-less workshop.txt
+cat too-long-log
 ```
-# grep (Filer the contents of a file)
+
+Whoa! That's a lot of stuff. How can we see the contents in a better way?
+
+## `less`
+
+With `less` we can display the contents in chunks that we can page through. 
+
+Let's try `less` on the `too-long-log` we sent to the emulator earlier. Do you remember where it was stored?
+
+TRY IT OUT
+
+```
+less /mnt/too-long-log
+```
+
+Now it only show a set of lines at a time. Hit the `space-bar` to see the next page. When you are done looking at the pages hit `q` to guit `less`.
+
+There is a lot of stuff in this file and its hard to read and sort through, even with `less`. But that's ok. We have commands to help with that.
+
+# `tail` and `head` (see the last few line or the first few lines)
+
+`tail` lets us see the bottom lines of a file. 
+
+TRY IT NOW
+
+```
+tail too-long-log
+```
+
+You can also tell it how many lines you want to see, like this.
+
+TRY IT OUT
+
+```
+tail -1 too-long-log
+```
+
+This tells `tail` to only show the last line in the file.
+
+`head` lets us see the top lines of a file.
+
+TRY IT NOW
+
+```
+head too-long-log
+```
+
+You can give head line options too. Try some options on `head` and `tail`.
+
+# grep (filter and search the contents of a file)
 
 With `grep` we can search the contents to find a pattern. `grep` will display the lines that have a pattern that matches.
 
@@ -329,9 +415,12 @@ less
 
 Ok cool. Now let's try grep. Let's find all of the lines that have the word `awesome`. 
 
+TRY IT OUT
+
 ```
 grep awesome grep.txt
 ```
+
 `awesome` is the `pattern` we are looking for in the text and `grep.txt` is the file we are going to search in.
 
 What happened? Did you see the two lines?
@@ -341,25 +430,27 @@ bash is awesome
 hackathons are awesome
 ```
 
-Great. Try grep on some more patterns. What happens if you `grep` a pattern that isn't in the file?
+Great. Try `grep` on some more patterns. What happens if you `grep` a pattern that isn't in the file?
 
 ```
 grep saturn grep.txt
 ```
 
-You don't get any output.
+?
 
-### How do I use grep?
+### How do people use grep?
 
-I use grep a lot when I am looking through logs files for certain error messages, or when I only want the logs for a certain date and time. There are lots of applications of grep, but lof parsing is a common system administrator task.
+I use grep a lot when I am looking through logs files for certain error messages, or when I only want the logs for a certain date and time. There are lots of applications of grep, but log parsing is a common system administrator task.
+
+Scientists often use grep to process their data files.
 
 # >> and > (output redirect)
 
-Let's say we want to create a new file with the output of the grep command we ran above? We can use an output redirect.
+Let's say we want to create a new file with the output of the grep command we ran above. To do that we can use an `output redirect`. It is called this because this command will take the output of one command and instead of displaying it to the screen it can send it to a file.
 
-`>` will create a file and write to it, or if the file exists, it will overwrite the file.
+`>` will `create` a file and `write` to it, or if the file exists, it will `overwrite` the file.
 
-`>>` will append the output to the file
+`>>` will `append` the output to the file
 
 Let's use `>` to create a new file with the contents from `grep`.
 
@@ -380,8 +471,7 @@ Did you see the two lines? Great.
 Let's use `>>` to append the output to the file.
 
 ```
-grep 
-hellp grep.txt > awesome.txt
+grep hello grep.txt > awesome.txt
 ```
 What happened? How can I check the file?
 
@@ -389,7 +479,7 @@ What happened? How can I check the file?
 cat awesome.txt
 ```
 
-Did you see the `awesome` lines and the `hello` lines?
+Did you see the `awesome` and `hello` lines?
 
 # | (pipe)
 
@@ -437,9 +527,9 @@ What commands did we use to do these things
 * searched files for patterns
 * combined commands
 
-# cd and pwd (change directory and present working director)
+# cd and pwd revisit (change directory and present working directory)
 
-We have created files and listed files and folders. What if we wanted to create more folder and navigate to them like we do in Windows File Explorer or Mac Finder? We have a command for that too.
+We have created files and listed files and folders. What if we wanted to create more folder and navigate to them like we do in Windows File Explorer or Mac Finder? We used that command earlier. Do you remember what it was?
 
 First let's find out where we are.
 
@@ -452,7 +542,7 @@ pwd
 What happened? You saw the `path` to where you are in the `filesystem`.
 
 ```
-/hackathon
+/mnt/hackathon
 ```
 
 With `cd` we can go up to the folder above or we can go to a folder we specify. We can also specify a longer path to folders in other places. Let's try doing that. Since the emulator doesnt have many folders, let's create some.
@@ -540,23 +630,9 @@ Did you see this?
 
 Great!
 
-# Tab complete
 
-Most commands lines will have something called `tab complete`. `Tab complete` will automatically complete your typing a file name or path for you. 
 
-TRY IT OUT
-
-Let's `cd` into `two`, but instead of typing out `two` just type the letter `t` and hit `tab`. This should automatically type the word `two` for you.
-
-# Writing a script
-
-We don't have to write our commands to the commands line. We can put them in a file and then run the file. This is called a script because the operating system will follow it and repeat the commands. This let's us do things like:
-
-* automate repetitive tasks
-* reproduce the same steps every time
-* share our commands with others
-
-THINK OF SOMETHING TO AUTOMATE
+# `mv` (moving files)
 
 # wc (word count) (MAYBE)
 
@@ -574,18 +650,17 @@ What happened? You should see a count of all of the words in the file.
 
 What if I want
 
+# Writing a script
 
-## SNAKE! (MAYBE)
+We don't have to write our commands to the commands line. We can put them in a file and then run the file. This is called a script because the operating system will follow it and repeat the commands. This lets us do things like:
 
-Let's play snake.
+* automate repetitive tasks
+* reproduce the same steps every time
+* share our commands with others
 
-TRY IT OUT
+THINK OF SOMETHING TO AUTOMATE
 
-```snake```
 
-What happened? We played a nice game of snake. 
-
-Hit `esc` key or `q` to stop the game and go back to the command line.
 
 
 
