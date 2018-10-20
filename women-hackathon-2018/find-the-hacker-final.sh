@@ -25,27 +25,27 @@ echo "make a copy to keep the original for auditing purposes. "
 cp access.log access-copy.log
 
 echo "inspect the file. get an idea of what's in it"
-cat server-copy.log
+cat access-copy.log
 
 echo "It looks like a dictionary attack! The hacker is trying to guess a user's password"
 echo "let's find out if she guessed one correctly"
 
 echo "get all of the logs with failed login attempts"
-cat server-copy.log | grep "login failed"
+cat access-copy.log | grep "login failed"
 
 # There is too much to see on one screen
 
 echo "who has mulitple failed login attempts?"
 
 echo "let's create a file with just the failed logins"
-cat server-copy.log | grep "login failed" > login-failed.log
+cat access-copy.log | grep "login failed" > login-failed.log
 
 echo "how many do we have?"
 cat login-faile.log | wc -l
 
 echo "we think the breach happened at 10:14!!!"
 echo "can we see who logged in at 10:14?"
-cat server-copy.log | grep "10:14"
+cat access-copy.log | grep "10:14"
 
 echo "It might have been Blake's user that was compromised. Look at all of those failed logins!"
 
@@ -53,7 +53,7 @@ echo "It might have been Blake's user that was compromised. Look at all of those
 
 echo "did Blake also have a successful login at this time?"
 echo "let's get all of Blake's login attempts"
-cat server-copy.log | grep "blake" > blake.log
+cat access-copy.log | grep "blake" > blake.log
 
 echo "let's also see all of his logins at 10:14"
 cat blake.log | grep "10:14" > blake-1004.log
@@ -64,7 +64,7 @@ cat blake-1004.log | grep "successful login"
 echo "YES! I think you are on to something!"
 echo " If out hypothese is right then we should also see root impersonate right 
 after the successful login 10:14.2"
-cat server-copy.log | grep "10:14.3"
+cat access-copy.log | grep "10:14.3"
 
 # Blake's account was likely compromised. Blake needs some training in password safety
 
