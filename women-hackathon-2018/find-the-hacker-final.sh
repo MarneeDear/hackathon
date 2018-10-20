@@ -62,7 +62,7 @@ echo "does Blake have a successful login attempt?"
 cat blake-1004.log | grep "successful login"
 
 echo "YES! I think you are on to something!"
-echo " If out hypothese is right then we should also see root impersonate right 
+echo " If out hypothesis is right then we should also see root impersonate right 
 after the successful login 10:14.2"
 cat access-copy.log | grep "10:14.3"
 
