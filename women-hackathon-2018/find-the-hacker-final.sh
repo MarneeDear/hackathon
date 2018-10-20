@@ -69,10 +69,11 @@ cat access-copy.log | grep "10:14.3"
 # Blake's account was likely compromised. Blake needs some training in password safety
 
 
-echo "Send the evidence to the lead Forensic Investigator. She likes to see all of your work for auditing and reproducibility."
+echo "Send the evidence to the Lead Forensic Investigator. She likes to see all of your work for auditing and reproducibility."
 echo "make a new directory with the results"
 mkdir /mnt/hack-evidence
 echo "copy all of our evidence files to this folder"
+cp /mnt/access.log /mnt/hack-evidence/access.log
 cp blake.log /mnt/hack-evidence/evidence-blake-logins.log
 cp blake-1004.log /mnt/hack-evidence/evidence-blake-logins-1004.log
 
