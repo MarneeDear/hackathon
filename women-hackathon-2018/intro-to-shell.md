@@ -25,13 +25,13 @@ Note: Windows has a command line too, but it is an operating system called DOS a
 5) Using the explorer, find the folder you unzipped. Go into women-hackathon-2018.
 6) Select `too-long-log`.
 
-# Shell help
+# UNIX command line help
 
 [Explain Shell](https://explainshell.com/)
 
-# What is the shell, anyway?
+# What is the comand, anyway?
 
-The shell is an interface to your computer's operating system. It provides a bumch of commands that let you do stuff with your computer and its files. This includes stuff like:
+The command line is an interface to your computer's operating system. It provides a bumch of commands that let you do stuff with your computer and its files. This includes stuff like:
 
 * list all of the files
 * create a file
@@ -239,68 +239,6 @@ ls -la
 
 Did you see the new file? If you used the long option you should also see today's date and time.
 
-# `vi` (edit a file)
-
-`workshop.txt` is empty. But there are command line tools that will let us edit the files. One of the most common is `vi`. With `vi` you can use the keyboard to move around in the file, make edits, copy and paste, and do other editing things. Let's try it.
-
-TRY IT OUT
-```
-vi workshop.txt
-```
-
-What happened? The command line turned into the vi editor. Let's try adding some text.
-
-Try typing something.
-
-Notice that nothing happens. This is because `vi` won't start typing until you tell it that you want to start entering stuff. That command is `i`.
-
-TRY IT OUT
-
-```
-hit the `i` key and then try to enter some stuff
-```
-
-Ok, now we have some content, but how do we save?
-
-First
-
-```
-hit the `esc` key
-```
-
-Next
-
-```
-shift + colon
-```
-This puts a colon and a command line at the bottom of the `vi` frame, like this.
-```
-:
-```
-On that command-line type
-```
-w
-```
-
-And then hit enter.
-
-You have just saved your file.
-
-Ok now how do we exit `vi`?
-
-```
-shift + colon
-```
-At the `:` enter
-```
-:q
-```
-
-`q ` means `quit` the program.
-
-Now you should be back the command line.
-
-There are lots of commands in `vi` that you can learn, but I will leave that to you.
 
 # Review
 
@@ -376,45 +314,6 @@ Now it only show a set of lines at a time. Hit the `space-bar` to see the next p
 
 There is a lot of stuff in this file and its hard to read and sort through, even with `less`. But that's ok. We have commands to help with that.
 
-# `tail` and `head` (see the last few line or the first few lines)
-
-`tail` lets us see the bottom lines of a file. 
-
-TRY IT NOW
-
-```
-tail /mnt/too-long-log
-```
-
-You can also tell it how many lines you want to see, like this.
-
-TRY IT OUT
-
-```
-tail -1 /mnt/too-long-log
-```
-
-This tells `tail` to only show the last line in the file.
-
-`head` lets us see the top lines of a file.
-
-TRY IT NOW
-
-```
-head /mnt/too-long-log
-```
-
-You can give head line options too. Try some line number options on `head` and `tail`.
-
-```
-tail -10 /mnt/too-long-log
-```
-
-```
-head -100 /mnt/too-long-log
-```
-
-That's great but what if I am looking for specific word or a date and time? No problem. There is a command for that.
 
 # grep (filter and search the contents of a file)
 
@@ -425,13 +324,13 @@ Let's create a file do `grep`.
 Do you remember how to create an empty file?
 
 ```
-touch grep.txt
+touch stuff.txt
 ```
 
 Do you remember how to edit a file?
 
 ```
-vi grep.txt
+vi stuff.txt
 ```
 
 Let's enter a few lines of text like this.
@@ -465,7 +364,7 @@ Ok cool. Now let's try grep. Let's find all of the lines that have the word `awe
 TRY IT OUT
 
 ```
-grep awesome grep.txt
+grep awesome stuff.txt
 ```
 
 `awesome` is the `pattern` we are looking for in the text and `grep.txt` is the file we are going to search in.
@@ -480,7 +379,7 @@ hackathons are awesome
 Great. Try `grep` on some more patterns. What happens if you `grep` a pattern that isn't in the file?
 
 ```
-grep saturn grep.txt
+grep saturn stuff.txt
 ```
 
 ?
@@ -491,44 +390,6 @@ I use grep a lot when I am looking through logs files for certain error messages
 
 Researchers often use grep to process their data files.
 
-# >> and > (output redirect)
-
-Let's say we want to create a new file with the output of the grep command we ran above. To do that we can use an `output redirect`. It is called this because this command will take the output of one command and instead of displaying it to the screen it can send it to a file.
-
-`>` will `create` a file and `write` to it, or if the file exists, it will `overwrite` the file.
-
-`>>` will `append` the output to the file
-
-Let's use `>` to create a new file with the contents from `grep`.
-
-TRY IT OUT
-
-REMEBER UP ARROW 
-
-```
-grep awesome grep.txt > awesome.txt
-```
-
-What happened? How can I check the file?
-
-```
-cat awesome.txt
-```
-
-Did you see the two lines? Great.
-
-Let's use `>>` to append the output to the file.
-
-```
-grep hello grep.txt > awesome.txt
-```
-What happened? How can I check the file?
-
-```
-cat awesome.txt
-```
-
-Did you see the `awesome` and `hello` lines?
 
 # | (pipe)
 
@@ -576,108 +437,7 @@ What commands did we use to do these things
 * searched files for patterns
 * combined commands
 
-# cd and pwd revisited (change directory and present working directory)
 
-We have created files and listed files and folders. What if we wanted to create more folders and navigate to them like we do in Windows File Explorer or Mac Finder? We used that command earlier. Do you remember what it was?
-
-First let's find out where we are.
-
-TRY IT OUT
-
-```
-pwd
-```
-
-What happened? You saw the `path` to where you are in the `filesystem`.
-
-```
-/mnt/hackathon
-```
-
-With `cd` we can go up to the folder above or we can go to a folder we specify. We can also specify a longer path to folders in other places. Let's try doing that. Since the emulator doesnt have many folders, let's create some.
-
-Do you remember the command to do that?
-
-TRY IT OUT
-
-```
-mkdir one
-mkdir two
-mkdir three
-```
-
-Let's check that the folders were created. Do you remember how to do that?
-
-TRY IT OUT
-
-```
-ls -la
-```
-
-Let's use `cd` to go into the `one` folder. Can you guess what the command looks like?
-
-TRY IT OUT
-
-```
-cd one
-```
-
-Ok now let's see what's in here.
-
-TRY IT OUT
-
-```
-ls -la
-```
-
-Let's find out where we are. Do you remember the command?
-
-TRY IT OUT
-
-```
-pwd
-```
-
-Did the output look like this?
-
-```
-/mnt/hackathon/one
-```
-
-Ok great. How do I get back to the hackathon folder? There are two ways. 
-
-```
-cd ..
-```
-
-The `..` tells `cd` to go up one level.
-
-Or, we can tell `cd` explicitly the folder path like this.
-
-```
-cd /mnt/hackathon
-```
-
-TRY IT OUT
-
-
-```
-cd ..
-```
-
-Let's check where we are.
-
-```
-pwd
-```
-
-Did you see this?
-
-```
-/mnt/hackathon
-```
-
-Great!
 
 # `mv` and `cp` and `rm` (moving files, copying files, deleting files)
 
@@ -787,6 +547,46 @@ TRY IT OUT
 rm -r copy
 ```
 
+# >> and > (output redirect)
+
+Let's say we want to create a new file with the output of the grep command we ran above. To do that we can use an `output redirect`. It is called this because this command will take the output of one command and instead of displaying it to the screen it can send it to a file.
+
+`>` will `create` a file and `write` to it, or if the file exists, it will `overwrite` the file.
+
+`>>` will `append` the output to the file
+
+Let's use `>` to create a new file with the contents from `grep`.
+
+TRY IT OUT
+
+REMEBER UP ARROW
+
+```
+grep awesome grep.txt > awesome.txt
+```
+
+What happened? How can I check the file?
+
+```
+cat awesome.txt
+```
+
+Did you see the two lines? Great.
+
+Let's use `>>` to append the output to the file.
+
+```
+grep hello grep.txt > awesome.txt
+```
+What happened? How can I check the file?
+
+```
+cat awesome.txt
+```
+
+Did you see the `awesome` and `hello` lines?
+
+
 # `wc` (word/line count)
 
 `wc` let's use count the number of words or lines in a file. Let's count the words in `grep.txt`.
@@ -808,6 +608,212 @@ TRY IT OUT
 ```
 wc -l grep.txt
 ```
+
+# `tail` and `head` (see the last few line or the first few lines)
+
+`tail` lets us see the bottom lines of a file. 
+
+TRY IT NOW
+
+```
+tail /mnt/too-long-log
+```
+
+You can also tell it how many lines you want to see, like this.
+
+TRY IT OUT
+
+```
+tail -1 /mnt/too-long-log
+```
+
+This tells `tail` to only show the last line in the file.
+
+`head` lets us see the top lines of a file.
+
+TRY IT NOW
+
+```
+head /mnt/too-long-log
+```
+
+You can give head line options too. Try some line number options on `head` and `tail`.
+
+```
+tail -10 /mnt/too-long-log
+```
+
+```
+head -100 /mnt/too-long-log
+```
+
+That's great but what if I am looking for specific word or a date and time? No problem. There is a command for that.
+
+
+# `vi` (edit a file)
+
+`workshop.txt` is empty. But there are command line tools that will let us edit the files. One of the most common is `vi`. With `vi` you can use the keyboard to move around in the file, make edits, copy and paste, and do other editing things. Let's try it.
+
+TRY IT OUT
+```
+vi workshop.txt
+```
+
+What happened? The command line turned into the vi editor. Let's try adding some text.
+
+Try typing something.
+
+Notice that nothing happens. This is because `vi` won't start typing until you tell it that you want to start entering stuff. That command is `i`.
+
+TRY IT OUT
+
+```
+hit the `i` key and then try to enter some stuff
+```
+
+Ok, now we have some content, but how do we save?
+
+First
+
+```
+hit the `esc` key
+```
+
+Next
+
+```
+shift + colon
+```
+This puts a colon and a command line at the bottom of the `vi` frame, like this.
+```
+:
+```
+On that command-line type
+```
+w
+```
+
+And then hit enter.
+
+You have just saved your file.
+
+Ok now how do we exit `vi`?
+
+```
+shift + colon
+```
+At the `:` enter
+```
+:q
+```
+
+`q ` means `quit` the program.
+
+Now you should be back the command line.
+
+There are lots of commands in `vi` that you can learn, but I will leave that to you.
+
+# cd and pwd revisited (change directory and present working directory)
+
+We have created files and listed files and folders. What if we wanted to create more folders and navigate to them like we do in Windows File Explorer or Mac Finder? We used that command earlier. Do you remember what it was?
+
+First let's find out where we are.
+
+TRY IT OUT
+
+```
+pwd
+```
+
+What happened? You saw the `path` to where you are in the `filesystem`.
+
+```
+/mnt/hackathon
+```
+
+With `cd` we can go up to the folder above or we can go to a folder we specify. We can also specify a longer path to folders in other places. Let's try doing that. Since the emulator doesnt have many folders, let's create some.
+
+Do you remember the command to do that?
+
+TRY IT OUT
+
+```
+mkdir one
+mkdir two
+mkdir three
+```
+
+Let's check that the folders were created. Do you remember how to do that?
+
+TRY IT OUT
+
+```
+ls -la
+```
+
+Let's use `cd` to go into the `one` folder. Can you guess what the command looks like?
+
+TRY IT OUT
+
+```
+cd one
+```
+
+Ok now let's see what's in here.
+
+TRY IT OUT
+
+```
+ls -la
+```
+
+Let's find out where we are. Do you remember the command?
+
+TRY IT OUT
+
+```
+pwd
+```
+
+Did the output look like this?
+
+```
+/mnt/hackathon/one
+```
+
+Ok great. How do I get back to the hackathon folder? There are two ways. 
+
+```
+cd ..
+```
+
+The `..` tells `cd` to go up one level.
+
+Or, we can tell `cd` explicitly the folder path like this.
+
+```
+cd /mnt/hackathon
+```
+
+TRY IT OUT
+
+```
+cd ..
+```
+
+Let's check where we are.
+
+```
+pwd
+```
+
+Did you see this?
+
+```
+/mnt/hackathon
+```
+
+Great!
 
 # Writing a script
 
